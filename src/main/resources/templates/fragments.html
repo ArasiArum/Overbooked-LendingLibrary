@@ -4,6 +4,7 @@
 
     <!-- Bootstrap stylesheets and script -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/lendinglibrary.css}" rel="stylesheet" />
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
     <title>Overbooked</title>
@@ -15,8 +16,8 @@
             <a th:href="@{/}" class="navbar-brand">Overbooked Lending Library</a>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                <li class="nav-item">Add Books</li>
-                <li class="nav-item">View Books</li>
+                <li class="nav-item"><a class="nav-link" href="/books/add">Add Books</a></li>
+                <li class="nav-item"><a class ="nav-link" href="/books/">View Books</a></li>
             </ul>
         </div>
     </div>
