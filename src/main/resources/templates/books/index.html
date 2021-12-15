@@ -6,21 +6,24 @@
 <div th:replace="fragments :: page-header"></div>
 <header class ="masthead">
     <div class="container px-4 px-lg-5 h-100">
-        <h1> Books : </h1>
+
     <table class="book-listing">
-        <tr th:each="book : ${books}">
-        <td>
-            <p th:text="${'Book Id: ' + book.id}"></p>
-            <p th:text="${'Book Title: ' + book.name}"></p>
-            <p th:text="${'Author: ' + book.author}"></p>
-            <p th:text="${'Summary: ' + book.summary}"></p>
-        </td>
+        <tr>
+            <th>Books Available</th>
+        </tr>
+        <tr>
+            <td>
+                <li th:each="book : ${books}">
+                    <a th:href="@{'/books/view/' + ${book.id}}" th:text="${book.name}"></a>
+                </li>
+            </td>
 
     </tr>
 
 
 
 </table>
+    </div>
 </header>
 </body>
 </html>

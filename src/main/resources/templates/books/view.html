@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+<header class="masthead">
+    <div class="container">
+
+<h1 class = "text-white" th:text="${'Book : ' + book.name}">Default Title</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="book-listing">
+    <p th:text="${'Author: ' + book.author}"></p>
+    <p th:text="${'Summary: ' + book.summary}"></p>
+</div>
+
+    </div>
+</header>
+</body>
+</html>
