@@ -35,4 +35,8 @@ public class User {
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
+
+    public int getId() {
+        return id;
+    }
 }
