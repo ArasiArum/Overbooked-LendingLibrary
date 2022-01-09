@@ -1,18 +1,13 @@
 package org.launchcode.lendinglibrary.models;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.Objects;
 
 
 @Entity
-public class Book {
+public class Book extends AbstractEntity{
 
-    @Id
-    @GeneratedValue
-    private int id;
+
 
     @NotBlank(message="Book Title is required!")
     @Size(min= 3, max= 60, message = "Book Title must be between 3 and 60 characters!")
@@ -59,20 +54,4 @@ public class Book {
         this.summary = summary;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return id == book.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

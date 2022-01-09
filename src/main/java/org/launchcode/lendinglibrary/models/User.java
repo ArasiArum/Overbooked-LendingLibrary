@@ -3,15 +3,10 @@ package org.launchcode.lendinglibrary.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class User {
-    @Id
-    @GeneratedValue
-    private int id;
+public class User extends AbstractEntity{
 
     @NotNull
     private String username;
@@ -44,7 +39,5 @@ public class User {
         return encoder.matches(password, pwHash);
     }
 
-    public int getId() {
-        return id;
-    }
+
 }

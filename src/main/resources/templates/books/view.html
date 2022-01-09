@@ -12,8 +12,11 @@
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="book-listing">
-    <p th:text="${'Author: ' + book.author}"></p>
-    <p th:text="${'Summary: ' + book.summary}"></p>
+    <p class ="text-left" th:text="${'Author: ' + book.author}"></p>
+    <p class ="text-left" th:text="${'Summary: ' + book.summary}"></p>
+    <div class="d-grid2">
+        <button class="button-login btn-primary" id="request" type="submit">Request</button>
+    </div>
 </div>
 
     </div>

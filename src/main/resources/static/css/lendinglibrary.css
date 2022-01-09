@@ -87,6 +87,8 @@ div.book-listing {
     border: 1px solid #e4e4e4;
     width: 80%;
     background-color: #e4e4e4;
+
+
 }
 
 .button-login{
@@ -105,6 +107,10 @@ text-align:center;
 }
 .d-grid1 {
   text-align : center;
+}
+
+.d-grid2 {
+  text-align : right;
 }
 .center-block {
   margin: auto;
@@ -166,4 +172,7 @@ input::-webkit-input-placeholder {
 }
 p{
 text-align: center;}
+
+.text-left{
+text-align : left;}
 
