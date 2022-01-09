@@ -5,39 +5,34 @@
 
 <body>
 <div th:replace="fragments :: page-header"></div>
-<header class = "masthead">
-    <div class="container px-4 px-lg-5 h-100">
-        <div class="row gx-4 gx-lg-5 h-50 align-items-center justify-content-center text-center">
+<header class = "masterhead" text-center>
+    <div class="container px-4 px-lg-5 h-100 ">
+        <div class="row gx-4 gx-lg-5 h-75 align-items-center justify-content-center text-center">
             <div class="col-lg-8 align-self-end">
-                <h1 class = "text-white font-weight-bold"> Welcome to Overbooked Lending Library !</h1>
+                <h1 class = "text-white"> Welcome to Overbooked Lending Library !</h1>
             </div>
+
+            <form method="post" >
+
+                <div class="form-floating mb-3 parent">
+                    <input th:field="${loginFormDTO.username}" type="text" placeholder="Username" class="form-control-login">
+                    <p class="error" th:errors = "${loginFormDTO.username}"></p>
+                </div>
+
+                <div class="form-floating mb-3 parent">
+                    <input th:field="${loginFormDTO.password}" type="password" placeholder="Password" class="form-control-login">
+                    <p class="error" th:errors="${loginFormDTO.password}"></p>
+                </div>
+                <div class="d-grid1">
+                    <button class="button-login btn-primary" id="login" type="submit">Log in</button>
+                </div>
+            <p>Don't have an account? <a href="/register">Register for one.</a></p>
+            </form>
+
         </div>
-    </div>
+
+        </div>
 </header>
-<div class="container">
-    <form method="post">
-        <div class="form-floating mb-3">
-            <input th:field="${loginFormDTO.username}" class="form-control">
-            <label>Username</label>
-            <p class="error" th:errors = "${loginFormDTO.username}"></p>
-        </div>
-
-        <div class="form-floating mb-3">
-            <input th:field="${loginFormDTO.password}" type="password" class="form-control">
-            <label>Password</label>
-            <p class="error" th:errors="${loginFormDTO.password}"></p>
-        </div>
-
-
-
-        <div class="d-grid">
-            <button class="btn btn-primary btn-xl" id="login" type="submit">Log in</button>
-        </div>
-    </form>
-
-    <p>Don't have an account? <a href="/register">Register for one.</a></p>
-
-</div>
 </body>
 </html>
 

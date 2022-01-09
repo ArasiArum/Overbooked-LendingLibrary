@@ -11,34 +11,34 @@
             <div class="col-lg-8 align-self-end">
                 <h1 class = "text-white font-weight-bold"> Welcome to Overbooked Lending Library !</h1>
             </div>
+
+            <form method="post">
+                <div class="form-floating mb-3">
+                    <input th:field="${registerFormDTO.username}" class="form-control">
+                    <label>Username</label>
+                    <p class="error" th:errors = "${registerFormDTO.username}"></p>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input th:field="${registerFormDTO.password}" type="password" class="form-control">
+                    <label>Password</label>
+                    <p class="error" th:errors="${registerFormDTO.password}"></p>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input  th:field="${registerFormDTO.verifyPassword}" type="password" class="form-control">
+                    <label>Verify Password</label>
+                </div>
+
+                <div class="d-grid">
+                    <button class="btn btn-primary btn-xl" id="register" type="submit">Register</button>
+                </div>
+            </form>
+
         </div>
     </div>
+
 </header>
-<div class="container">
-    <form method="post">
-        <div class="form-floating mb-3">
-            <input th:field="${registerFormDTO.username}" class="form-control">
-            <label>Username</label>
-            <p class="error" th:errors = "${registerFormDTO.username}"></p>
-        </div>
-
-        <div class="form-floating mb-3">
-            <input th:field="${registerFormDTO.password}" type="password" class="form-control">
-            <label>Password</label>
-            <p class="error" th:errors="${registerFormDTO.password}"></p>
-        </div>
-
-        <div class="form-floating mb-3">
-            <input  th:field="${registerFormDTO.verifyPassword}" type="password" class="form-control">
-            <label>Verify Password</label>
-        </div>
-
-        <div class="d-grid">
-            <button class="btn btn-primary btn-xl" id="register" type="submit">Register</button>
-        </div>
-    </form>
-
-</div>
 </body>
 </html>
 
