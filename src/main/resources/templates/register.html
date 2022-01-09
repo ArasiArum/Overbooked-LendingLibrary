@@ -3,36 +3,35 @@
 <head th:replace="fragments :: head">
 </head>
 
+
 <body>
 <div th:replace="fragments :: page-header"></div>
-<header class = "masthead">
-    <div class="container px-4 px-lg-5 h-100">
-        <div class="row gx-4 gx-lg-5 h-50 align-items-center justify-content-center text-center">
+<header class = "masterhead" text-center>
+    <div class="container px-4 px-lg-5 h-100 ">
+        <div class="row gx-4 gx-lg-5 h-75 align-items-center justify-content-center text-center">
             <div class="col-lg-8 align-self-end">
-                <h1 class = "text-white font-weight-bold"> Welcome to Overbooked Lending Library !</h1>
+                <h1 class = "text-white"> Welcome to Overbooked Lending Library !</h1>
             </div>
 
             <form method="post">
-                <div class="form-floating mb-3">
-                    <input th:field="${registerFormDTO.username}" class="form-control">
-                    <label>Username</label>
+                <div class="form-floating mb-3 parent">
+                    <input th:field="${registerFormDTO.username}" type="text" placeholder="Username" class="form-control-login">
                     <p class="error" th:errors = "${registerFormDTO.username}"></p>
                 </div>
 
-                <div class="form-floating mb-3">
-                    <input th:field="${registerFormDTO.password}" type="password" class="form-control">
-                    <label>Password</label>
+                <div class="form-floating mb-3 parent">
+                    <input th:field="${registerFormDTO.password}" type="password" placeholder="Password" class="form-control-login">
                     <p class="error" th:errors="${registerFormDTO.password}"></p>
                 </div>
 
-                <div class="form-floating mb-3">
-                    <input  th:field="${registerFormDTO.verifyPassword}" type="password" class="form-control">
-                    <label>Verify Password</label>
+                <div class="form-floating mb-3 parent">
+                    <input  th:field="${registerFormDTO.verifyPassword}" type="password" placeholder="Verify Password" class="form-control-login">
                 </div>
 
-                <div class="d-grid">
-                    <button class="btn btn-primary btn-xl" id="register" type="submit">Register</button>
+                <div class="d-grid1">
+                    <button class="button-login btn-primary" id="register" type="submit">Register</button>
                 </div>
+
             </form>
 
         </div>
