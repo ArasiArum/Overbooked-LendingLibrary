@@ -22,6 +22,8 @@ public class AuthenticationController {
     @Autowired
     UserRepository userRepository;
 
+
+
     private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session){
@@ -65,6 +67,15 @@ public class AuthenticationController {
             return "register";
         }
 
+        User existingEmail = userRepository.findByEmail(registerFormDTO.getEmail());
+
+        if(existingEmail != null) {
+            errors.rejectValue("email","email.alreadyexists","This email id is already registered");
+            model.addAttribute("title","Register");
+            return "register";
+        }
+
+
         String password = registerFormDTO.getPassword();
         String verifyPassword = registerFormDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
@@ -73,7 +84,7 @@ public class AuthenticationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
+        User newUser = new User(registerFormDTO.getUsername(),registerFormDTO.getEmail(), registerFormDTO.getPassword());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
@@ -115,10 +126,11 @@ public class AuthenticationController {
 
         setUserInSession(request.getSession(), theUser);
 
+
         return "redirect:";
     }
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request){
+    public String logout(HttpServletRequest request, Model model){
         request.getSession().invalidate();
         return "redirect:/login";
     }

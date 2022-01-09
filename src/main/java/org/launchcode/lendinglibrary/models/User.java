@@ -17,19 +17,27 @@ public class User {
     private String username;
 
     @NotNull
+    private String email;
+
+    @NotNull
     private String pwHash;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public User() {}
 
-    public User(String username, String password){
+    public User(String username,String email, String password){
         this.username = username;
         this.pwHash = encoder.encode(password);
+        this.email = email;
     }
 
     public String getUsername() {
         return username;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public boolean isMatchingPassword(String password) {
