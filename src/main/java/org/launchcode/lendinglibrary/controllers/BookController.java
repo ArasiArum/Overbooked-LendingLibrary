@@ -1,13 +1,19 @@
 package org.launchcode.lendinglibrary.controllers;
 
 import org.launchcode.lendinglibrary.models.Book;
+import org.launchcode.lendinglibrary.models.BookRequest;
+import org.launchcode.lendinglibrary.models.User;
 import org.launchcode.lendinglibrary.models.data.BookRepository;
+import org.launchcode.lendinglibrary.models.data.BookRequestRepository;
+import org.launchcode.lendinglibrary.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -18,6 +24,16 @@ public class BookController {
 
     @Autowired
     private BookRepository bookRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private BookRequestRepository bookRequestRepository;
+
+    @Autowired
+    AuthenticationController authenticationController;
+
 
     @GetMapping
     public String index(Model model){
@@ -58,6 +74,25 @@ public class BookController {
         } else {
             return "redirect:../";
         }
+    }
+
+
+
+    @PostMapping("view/{bookId}")
+    public String requestBook(Model model, @PathVariable int bookId,HttpServletRequest request){
+
+        HttpSession session = request.getSession();
+        User user = authenticationController.getUserFromSession(session);
+
+        //User currentUser = getLoggedInUser(request.getUserPrincipal()) ;
+
+        Optional optBook = bookRepository.findById(bookId);
+        Book theBook = (Book) optBook.get();
+        BookRequest bookRequest = new BookRequest(user,theBook);
+        bookRequestRepository.save(bookRequest);
+
+        return "redirect:../";
+
     }
 
 }
