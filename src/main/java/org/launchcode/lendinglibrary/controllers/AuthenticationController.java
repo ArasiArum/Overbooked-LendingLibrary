@@ -11,6 +11,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -25,6 +26,8 @@ public class AuthenticationController {
 
 
     private static final String userSessionKey = "user";
+
+    protected static final String MESSAGE_KEY = "message";
 
     public User getUserFromSession(HttpSession session){
         Integer userId=(Integer) session.getAttribute(userSessionKey);
@@ -125,14 +128,12 @@ public class AuthenticationController {
         }
 
         setUserInSession(request.getSession(), theUser);
-
-
         return "redirect:";
     }
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request, Model model){
+    public String logout(HttpServletRequest request, Model model, RedirectAttributes redirectAttributes){
         request.getSession().invalidate();
-       
+        redirectAttributes.addFlashAttribute("message","info|You have logged out.");
         return "redirect:/login";
     }
 }

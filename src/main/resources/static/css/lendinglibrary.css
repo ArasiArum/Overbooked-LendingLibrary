@@ -176,3 +176,14 @@ text-align: center;}
 .text-left{
 text-align : left;}
 
+
+.alerts {
+    height : 15px;
+    line-height:2.6;
+
+  padding: 3rem 1rem;
+  border-radius: 0.25rem;
+      color: #212529;
+       background-color: #f5bda4;
+       border-color: #977e6e;
+}
