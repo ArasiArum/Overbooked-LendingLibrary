@@ -2,6 +2,7 @@ package org.launchcode.lendinglibrary.controllers;
 
 import org.launchcode.lendinglibrary.models.Book;
 import org.launchcode.lendinglibrary.models.BookRequest;
+import org.launchcode.lendinglibrary.models.Genre;
 import org.launchcode.lendinglibrary.models.User;
 import org.launchcode.lendinglibrary.models.data.BookRepository;
 import org.launchcode.lendinglibrary.models.data.BookRequestRepository;
@@ -40,14 +41,31 @@ public class BookController {
     AuthenticationController authenticationController;
 
 
+//    @GetMapping
+//    public String index(Model model){
+//        model.addAttribute("title","All Books");
+//        model.addAttribute("books", bookRepository.findAll());
+//        return "books/index";
+//    }
+
     @GetMapping
-    public String index(Model model){
-        model.addAttribute("title","All Books");
-        model.addAttribute("books", bookRepository.findAll());
+    public String displayBooks(@RequestParam(required = false) Integer genreId, Model model) {
+
+        if (genreId == null) {
+            model.addAttribute("title", "All Books");
+            model.addAttribute("books", bookRepository.findAll());
+        } else {
+            Optional<Genre> result = genreRepository.findById(genreId);
+            if (result.isEmpty()) {
+                model.addAttribute("title", "Invalid Category ID: " + genreId);
+            } else {
+                Genre genre = result.get();
+                model.addAttribute("title", "Books in genre: " + genre.getName());
+                model.addAttribute("books", genre.getBooks());
+            }
+        }
         return "books/index";
     }
-
-
 
 
     @GetMapping("add")
