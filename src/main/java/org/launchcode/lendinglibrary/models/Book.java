@@ -1,6 +1,8 @@
 package org.launchcode.lendinglibrary.models;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -17,14 +19,19 @@ public class Book extends AbstractEntity{
     @Size(min = 5 , max = 60, message= "Author name must be between 5 and 60 characters!")
     private String author;
 
+    @ManyToOne
+    @NotNull(message = "Genre is required")
+    private Genre genre;
+
 
     @Size(max=500 , message = "Summary should not exceed 400 characters!")
     private String summary;
 
-    public Book(String name, String author, String summary){
+    public Book(String name, String author, Genre genre, String summary){
 
         this.name = name;
         this.author = author;
+        this.genre = genre;
         this.summary = summary;
 
     }
@@ -54,4 +61,11 @@ public class Book extends AbstractEntity{
         this.summary = summary;
     }
 
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
 }
