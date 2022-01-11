@@ -8,22 +8,35 @@
 <div class="container">
     <h1 class="text-white">Enter book details</h1>
 <form method="post">
+
     <div class="form-floating mb-3">
-        <input th:field="${book.name}" class="form-control">
-        <label>Book Title</label>
-        <p class="error" th:errors = "${book.name}"></p>
+        <input th:field="${book.name}" type="text" placeholder="Book Title" class="form-control-menu">
+        <p class="error text-left" th:errors = "${book.name}"></p>
     </div>
+
     <div class="form-floating mb-3">
-        <input th:field = "${book.author}" class ="form-control">
-        <label>Book Author</label>
-        <p class="error" th:errors="${book.author}"></p>
+        <input th:field= "${book.author}" type="text" placeholder="Book Author" class="form-control-menu">
+        <p class="error text-left" th:errors = "${book.author}"></p>
     </div>
+
+
     <div class="form-floating mb-3">
-        <input th:field = "${book.summary}" class ="form-control" >
-        <label>Book Summary</label>
-        <p class="error" th:errors="${book.summary}"></p>
+            <select class="form-control-menu" th:field="${book.genre}">
+                <option value="">Genre</option>
+                <option th:each="genre : ${genres}"
+                        th:value="${genre.id}"
+                        th:text="${genre.name}"
+                >genre</option>
+            </select>
+            <p class="error text-left" th:errors="${book.genre}"></p>
+<!--        </label>-->
     </div>
-    <div class="d-grid">
+
+    <div class="form-floating mb-3">
+        <input th:field = "${book.summary}" type="text" placeholder="Book Summary" class ="form-control-textarea" >
+        <p class="error text-left" th:errors="${book.summary}"></p>
+    </div>
+    <div class="d-grid1">
 
         <button class="btn btn-primary btn-xl" id="add" type="submit">Add</button>
     </div>

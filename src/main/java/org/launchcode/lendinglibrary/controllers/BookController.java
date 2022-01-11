@@ -5,6 +5,7 @@ import org.launchcode.lendinglibrary.models.BookRequest;
 import org.launchcode.lendinglibrary.models.User;
 import org.launchcode.lendinglibrary.models.data.BookRepository;
 import org.launchcode.lendinglibrary.models.data.BookRequestRepository;
+import org.launchcode.lendinglibrary.models.data.GenreRepository;
 import org.launchcode.lendinglibrary.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,9 @@ public class BookController {
     private BookRequestRepository bookRequestRepository;
 
     @Autowired
+    private GenreRepository genreRepository;
+
+    @Autowired
     AuthenticationController authenticationController;
 
 
@@ -50,6 +54,7 @@ public class BookController {
     public String displayAddBooksForm(Model model){
         model.addAttribute("title","Add Books");
         model.addAttribute(new Book());
+        model.addAttribute("genres",genreRepository.findAll());
         return "books/add";
 
     }
