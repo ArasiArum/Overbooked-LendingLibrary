@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body >
+
+<div th:replace="fragments :: page-header"></div>
+<header class ="masthead">
+    <div class="container px-4 px-lg-5 h-100">
+
+        <table class="book-listing">
+            <tr>
+                <th>Genres Available</th>
+            </tr>
+            <tr>
+                <td>
+                    <li th:each="genre : ${genres}">
+                        <a th:text="${genre.name}"> </a> </li>
+                </td>
+
+            </tr>
+
+
+
+        </table>
+    </div>
+</header>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+<header class="masthead">
+    <div class="container">
+        <h1 class="text-white">Enter Genre details</h1>
+        <form method="post">
+            <div class="form-floating mb-3">
+                <input th:field="${genre.name}" class="form-control">
+                <label>Genre name</label>
+                <p class="error" th:errors = "${genre.name}"></p>
+            </div>
+
+            <div class="d-grid">
+
+                <button class="btn btn-primary btn-xl" id="create" type="submit">Create</button>
+            </div>
+        </form>
+    </div>
+</header>
+</body>
+</html>
