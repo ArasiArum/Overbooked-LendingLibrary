@@ -12,8 +12,9 @@
     <nav th:replace="fragments :: page-header"></nav>
         <form method="post">
             <div class="book-listing">
-                <p class ="text-left" th:text="${'Author: ' + book.author}"></p>
-                <p class ="text-left" th:text="${'Summary: ' + book.summary}"></p>
+                <p class ="text-left" th:text="${'Author : ' + book.author}"></p>
+                <p class ="text-left" th:text="${'Summary : ' + book.summary}"></p>
+                <p class ="text-left" th:text="${'Genre : ' + book.genre}"></p>
                  <div class="d-grid2">
                     <button class="button-login btn-primary" id="request" type="submit">Request</button>
                  </div>
