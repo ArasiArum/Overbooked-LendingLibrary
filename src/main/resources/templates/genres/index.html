@@ -11,12 +11,14 @@
             <tr>
                 <th>Genres Available</th>
             </tr>
+
             <tr>
                 <td>
                     <li th:each="genre : ${genres}">
-                        <a th:text="${genre.name}"> </a> </li>
+                        <a th:text="${genre.name}" th:href="'/books?genreId=' + ${genre.id}"></a>
+                        <!--                        <a th:text="${genre.name}"> </a>-->
+                    </li>
                 </td>
-
             </tr>
         </table>
 
