@@ -1,11 +1,13 @@
 package org.launchcode.lendinglibrary.models;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
 public class Genre extends AbstractEntity{
 
+    @NotBlank(message="Genre name is required!")
     @Size(min=3, message="Name must be at least 3 characters long")
     private String name;
 

@@ -4,19 +4,19 @@
 <body>
 
 <div th:replace="fragments :: page-header"></div>
-<header class="masthead">
+<header class="masterhead">
     <div class="container">
-        <h1 class="text-white">Enter Genre details</h1>
+        <h2 class="text-white1">Enter Genre details</h2>
         <form method="post">
-            <div class="form-floating mb-3">
-                <input th:field="${genre.name}" class="form-control">
-                <label>Genre name</label>
+
+            <div class="form-floating mb-3 ">
+                <input th:field="${genre.name}" type="text" placeholder="Genre name" class="form-control-menu">
                 <p class="error" th:errors = "${genre.name}"></p>
+
             </div>
 
-            <div class="d-grid">
-
-                <button class="btn btn-primary btn-xl" id="create" type="submit">Create</button>
+            <div>
+                <button class="btn btn-primary btn-xl" id="create" type="submit">Add</button>
             </div>
         </form>
     </div>

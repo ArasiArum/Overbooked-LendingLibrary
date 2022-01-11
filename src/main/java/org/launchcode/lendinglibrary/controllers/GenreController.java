@@ -27,6 +27,8 @@ public class GenreController {
         return "genres/index";
     }
 
+
+
     @GetMapping("create")
     public String displayCreateGenreForm(Model model) {
         model.addAttribute("title","Create Genre");
@@ -45,6 +47,8 @@ public class GenreController {
         genreRepository.save(genre);
         return "redirect:";
     }
+
+
 
 
 
