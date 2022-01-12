@@ -5,6 +5,12 @@
 
 <div th:replace="fragments :: page-header"></div>
 <header class ="masthead">
+    <div>
+        <form th:action ="@{/search}" method="get" class="pull-right" >
+            <input type ="search" name="searchTerm" size="50" class="form-control-search" placeholder ="search term" required />
+            <button class="button-search btn-primary" id="search" type="submit">Search</button>
+        </form>
+    </div>
     <div class="container px-4 px-lg-5 h-100">
 
     <table class="book-listing">

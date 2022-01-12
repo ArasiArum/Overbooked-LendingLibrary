@@ -36,6 +36,9 @@
     </div>
 </div>
 
+
+
+
 <div th:fragment="messages"  >
     <div th:if="${message != null}"
          th:with="parts=${#strings.arraySplit(message, '|')}"
@@ -44,6 +47,10 @@
         <div th:text="${parts[1]}"></div>
     </div>
 </div>
+
+
+
+
 
 </body>
 </html>
